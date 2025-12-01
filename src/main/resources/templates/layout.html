@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Hello, sbb!</title>
+</head>
+<body>
+<!-- ▽ 네비게이션 바 시작 -->
+<nav class="bg-white shadow">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
+
+        <!-- 왼쪽: 홈 -->
+        <a th:href="@{/question/list}" class="text-xl font-bold text-gray-800 hover:text-blue-600">
+            sbb
+        </a>
+
+        <div>
+            <!-- 오른쪽 -->
+            <a th:href="@{/user/login}" sec:authorize="isAnonymous()"
+               class="text-gray-700 hover:text-blue-600 font-medium mr-2">
+                로그인
+            </a>
+            <form th:action="@{/user/logout}" sec:authorize="isAuthenticated()" method="post" class="inline-block">
+                <button type="submit" class="text-gray-700 hover:text-blue-600 font-medium mr-2">로그아웃</button>
+            </form>
+<!--            <a th:href="@{/user/logout}" sec:authorize="isAuthenticated()"-->
+<!--               class="text-gray-700 hover:text-blue-600 font-medium mr-2">-->
+<!--                로그아웃-->
+<!--            </a>-->
+            <a th:href="@{/user/signup}"
+               class="text-gray-700 hover:text-blue-600 font-medium">
+                회원가입
+            </a>
+        </div>
+    </div>
+</nav>
+<!-- △ 네비게이션 바 끝 -->
+<!-- 기본 템플릿 안에 삽입될 내용 Start -->
+<div class="max-w-5xl mx-auto mt-8 px-4">
+    <th:block layout:fragment="content"></th:block>
+</div>
+<!-- 기본 템플릿 안에 삽입될 내용 End -->
+
+<!-- 자바스크립트 Start -->
+<th:block layout:fragment="script"></th:block>
+<!-- 자바스크립트 End -->
+
+</body>
+</html>
